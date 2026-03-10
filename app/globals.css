@@ -1,0 +1,228 @@
+body{
+  background:#b8c7d9;
+  font-family:'Sacramento', cursive;
+  margin:0;
+  padding:0;
+}
+
+/* ========================= */
+/* DESKTOP */
+/* ========================= */
+
+.desktop{
+  width:900px;
+  margin:auto;
+  margin-top:40px;
+  border-radius:20px;
+  background:#dbe5f1;
+  padding:20px;
+  position:relative;
+}
+
+.topbar{
+  display:flex;
+  justify-content:center;
+  font-size:14px;
+}
+
+/* message button (desktop) */
+
+.messageBtn{
+  position:absolute;
+  right:50px;
+  top:80px;
+  background:#c9c7e8;
+  border:none;
+  padding:12px 18px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.messageBtn img{
+  width:20px;
+  display:block;
+  margin:auto;
+}
+
+.desktop-content{
+  display:flex;
+  margin-top:30px;
+}
+
+/* sidebar icons (desktop left side) */
+
+.sidebar{
+  width:120px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.iconBtn{
+  background:none;
+  border:none;
+  cursor:pointer;
+  text-align:center;
+  transition:all .25s ease;
+}
+
+.iconBtn img{
+  width:40px;
+  display:block;
+  margin:auto;
+}
+
+.iconBtn p{
+  margin-top:5px;
+  font-size:14px;
+}
+
+.iconBtn:hover{
+  transform:scale(1.08);
+}
+
+.main{
+  flex:1;
+}
+
+/* wallpaper */
+
+.wallpaper{
+  width:100%;
+  border-radius:12px;
+}
+
+/* dock */
+
+.dock{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  font-size:30px;
+}
+
+
+/* ========================= */
+/* MOBILE VIEW */
+/* ========================= */
+
+@media (max-width:768px){
+
+.desktop{
+  width:100%;
+  height:100vh;
+  margin:0;
+  padding:15px;
+  border-radius:0;
+  background:none;
+}
+
+/* stack layout */
+
+.desktop-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* title */
+
+.topbar{
+  text-align:center;
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+/* order fix */
+
+.main{
+  order:1;
+  width:100%;
+}
+
+.messageBtn{
+  order:2;
+}
+
+.sidebar{
+  order:3;
+}
+
+/* wallpaper */
+
+.wallpaper{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  border-radius:14px;
+  margin-bottom:10px;
+}
+
+/* message button */
+
+.messageBtn{
+  position:relative;
+  right:auto;
+  top:auto;
+  display:block;
+  margin:15px auto;
+  background:#c9c7e8;
+  padding:12px 18px;
+  border-radius:12px;
+}
+
+/* icons row */
+
+.sidebar{
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  gap:18px;
+}
+
+/* icon buttons */
+
+.iconBtn{
+  width:75px;
+  height:75px;
+  background:#d8d2f0;
+  border-radius:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.iconBtn img{
+  width:28px;
+}
+
+.iconBtn p{
+  font-size:12px;
+  margin-top:4px;
+}
+
+/* bottom dock */
+
+.dock{
+  position:fixed;
+  bottom:20px;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  font-size:32px;
+}
+
+.dock button{
+  background:rgba(255,255,255,0.4);
+  border:none;
+  border-radius:14px;
+  padding:10px;
+  backdrop-filter:blur(8px);
+}
+
+}

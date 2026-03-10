@@ -1,0 +1,208 @@
+
+body {
+    background: #b8c7d9;
+    font-family: 'Sacramento', cursive;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 800px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 20px;
+    background: #dbe5f1;
+    padding: 20px;
+}
+h1{
+    font-family: 'Sacramento',  cursive;
+    color: black;
+    font-size: 20px;
+}
+.Letter{
+    width: 600px;
+    height: 400px;
+    display: inline-block;
+}
+.rose{
+    width: 180px;
+    height: 200px;
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    animation: yidon 5s infinite;
+    transform: translateY(40%);
+}
+.petal{
+    width: 50px;
+    height: 50px;
+    background: yellow;
+    border-radius: 0px 50%;
+    position: absolute;
+    box-shadow: 0 0 10px #D1123F;
+    z-index: 2;
+    transform-origin: bottom right;
+    animation: zhankai2 10s infinite;
+}
+.petal:nth-child(2){
+    transform-origin: bottom right;
+    transform: rotate(90deg);
+    background: yellow;
+    left: -10px;
+    animation: zhankai2 10s infinite;
+}
+.petal:nth-child(3){
+    width: 40px;
+    height: 40px;
+    left: 10px;
+    top: -20px;
+    z-index: 1;
+    background: yellow;
+    transform-origin: bottom right;
+    animation: zhankai2 10s infinite;
+}
+.petal:nth-child(4){
+    transform: rotate(90deg);
+    width: 40px;
+    height: 40px;
+    left: 0;
+    top: -20px;
+    z-index: 1;
+    background: yellow;
+    transform-origin: bottom right;
+    animation: zhankai2 10s infinite;
+}
+.petal:nth-child(5){
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    left: 20px;
+    top: -3opx;
+    z-index: 0;
+    background: yellow;
+}
+.leaf{
+    position: absolute;
+    top: 120px;
+    left: -115px;
+}
+.stem{
+    width: 240px;
+    height: 40px;
+    background: transparent;
+    border: 8px solid #8ac78a;
+    border-color: #77a377 transparent transparent transparent;
+    border-radius: 50% 50%;
+    transform: rotate(100deg);
+}
+.leafs{
+    width: 50px;
+    height: 40px;
+    border-radius: 0px 50%;
+    background: #77a377;
+    position: absolute;
+    top: 0;
+    left: 100px;
+    z-index: 49;
+}
+.leafs:nth-child(2){
+    width: 40px;
+    height: 20px;
+    top: 40px;
+    left: 140px;
+    transform: rotate(120deg);
+}
+
+@keyframes yidon{
+    50%{
+        transform: translateY(35%);
+    }
+    100%{
+        transform: translateY(40%);
+    }
+}
+
+@keyframes zhankai2{
+    60%{
+        transform: rotate(110deg);
+    }
+    100%{
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes zhankai{
+    50%{
+        transform: rotate(-20deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f7f48b;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: #f4e77b;
+}
+
+
+
+/* ======================= */
+/* MOBILE RESPONSIVE */
+/* ======================= */
+
+@media (max-width:768px){
+
+.container{
+    width:90%;
+    min-height:450px;
+    position:relative;
+    margin:20px auto;
+    top:auto;
+    left:auto;
+    transform:none;
+}
+
+/* letter */
+.Letter{
+    width:100%;
+    font-size:16px;
+    padding-right:120px;
+}
+
+/* flower */
+.rose{
+    position:absolute;
+    right:10px;
+    bottom:10px;
+    width:120px;
+    height:140px;
+    transform:none;
+}
+
+/* FIX CLOSE BUTTON POSITION */
+.close-btn{
+    top:445px;
+    right:320px;
+    width:30px;
+    height:30px;
+    font-size:18px;
+}
+
+}
