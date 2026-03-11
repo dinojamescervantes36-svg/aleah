@@ -1,17 +1,17 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
-import "./yellow.css";
+import "./spanish_latte.css";
 
-export default function YellowFlower() {
+export default function SpanishLatte() {
   const router = useRouter();
 
-  // Full letter content as array of lines
+  // Full letter content
   const fullLetter = [
-    "Hey A! 🌼💛",
-    "I hope I remind you of the color yellow. The color of sunsets and sunrises as new spring beginnings come and go. The color of summer sand as it courses through your sun-kissed fingers.",
-    "The color of the autumn leaves as they crunch beneath your boots. The color of city lights illuminating the snowy winter streets. The color of clarity and of loyalty.",
-    "I hope I remind you of the color yellow, because that's the color that reminds me of you. Your smile is as beautiful as a rose, and I hope you can always smile.",
+    "Hey A! ☕💛",
+    "I hope I remind you of the cozy warmth of a Spanish Latte. Just like that perfect cup of coffee, you deserve to be enjoyed slowly sip by sip, moment by moment. Some days may feel heavy, but even the strongest coffee starts from quiet little moments and you make every moment brighter just by being you.",
+    "Remember, there’s someone secretly rooting for you, smiling at every little thing you do. 😉 So take it easy today, laugh a little, and know that you’re truly appreciated more than words can say. 🌸",
+    "Take it easy today, A.",
     "- Dino"
   ];
 
@@ -37,7 +37,7 @@ export default function YellowFlower() {
           setLineIndex(lineIndex + 1);
           setCharIndex(0);
           setDisplayedLetter(prev => [...prev, ""]);
-        }, 300); // shorter delay for better fit
+        }, 500);
         return () => clearTimeout(timeout);
       }
     }
@@ -56,25 +56,34 @@ export default function YellowFlower() {
       {/* Letter */}
       <div className="Letter">
         {displayedLetter.map((line, index) => (
-          <h1 key={index} style={{ wordWrap: "break-word" }}>{line}</h1>
+          <h1 key={index}>{line}</h1>
         ))}
       </div>
 
-      {/* Flower Illustration */}
-      <div className="rose">
-        <div className="flower">
-          <div className="petal"></div>
-          <div className="petal"></div>
-          <div className="petal"></div>
-          <div className="petal"></div>
-          <div className="petal"></div>
+      {/* Coffee Illustration */}
+      <div className="coffee-art">
+        <div className="steam">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
 
-        <div className="leaf">
-          <div className="stem"></div>
-          <div className="leafs"></div>
-          <div className="leafs"></div>
+        <div className="cup">
+          <div className="latte">
+            <div className="foam"></div>
+            <div className="latte-heart"></div>
+          </div>
+          <div className="handle"></div>
         </div>
+
+        <div className="saucer"></div>
+        <div className="shadow"></div>
+
+        <div className="bean" style={{ top: "-35px", right: "-35px" }}></div>
+        <div className="bean" style={{ top: "-20px", right: "-50px" }}></div>
+        <div className="bean" style={{ top: "-10px", right: "-20px" }}></div>
+        <div className="bean" style={{ top: "0px", right: "-60px" }}></div>
       </div>
     </div>
   );

@@ -11,7 +11,10 @@ export default function Notes() {
 
   // States
   const [note, setNote] = useState("");
-  const [toDoList, setToDoList] = useState(["Click Color YELLOW for today"]);
+  const [toDoList, setToDoList] = useState([
+    "Click Color YELLOW for today (March 10, 2023)",
+    "COFFEEE CLICK for a surprise (March 12, 2023)",
+  ]);
   const [newToDo, setNewToDo] = useState("");
   const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -30,9 +33,12 @@ export default function Notes() {
     setNewToDo("");
   };
 
-  // Navigate when sticky clicked
   const handleStickyClick = (color) => {
     router.push(`/flower/${color}`);
+  };
+
+  const handleCoffeeClick = () => {
+    router.push("/coffee/spanish_latte");
   };
 
   return (
@@ -40,15 +46,10 @@ export default function Notes() {
 
       {/* Header */}
       <div className="notes-header">
-        <button
-          className="back-btn"
-          onClick={() => router.push("/home")}
-        >
+        <button className="back-btn" onClick={() => router.push("/home")}>
           ← Back
         </button>
-
         <h2>Notes</h2>
-
         <span className="date">
           {currentTime.toLocaleDateString("en-US", {
             weekday: "short",
@@ -76,6 +77,13 @@ export default function Notes() {
             onClick={() => handleStickyClick(color)}
           ></div>
         ))}
+
+        {/* Coffee Sticky */}
+        <div
+          className="sticky coffee"
+          onClick={handleCoffeeClick}
+          title="Spanish Latte"
+        ></div>
       </div>
 
       {/* To-Do List */}
@@ -83,7 +91,12 @@ export default function Notes() {
         <h4>To-Do List</h4>
         <ul>
           {toDoList.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li
+              key={index}
+              className={item.includes("COFFEEE CLICK") ? "coffee-text" : ""}
+            >
+              {item}
+            </li>
           ))}
         </ul>
 
@@ -112,7 +125,6 @@ export default function Notes() {
           <div className="dog"></div>
         </div>
       </div>
-
     </div>
   );
 }

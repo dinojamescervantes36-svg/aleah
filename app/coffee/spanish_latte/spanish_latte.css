@@ -1,0 +1,369 @@
+body{
+background:#F5E6D3;
+font-family:'Sacramento', cursive;
+margin:0;
+}
+
+/* container */
+
+.container{
+width:800px;
+height:420px;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#C8A682;
+border-radius:20px;
+padding:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* close */
+
+.close-btn{
+position:absolute;
+right:15px;
+top:10px;
+background:none;
+border:none;
+font-size:20px;
+cursor:pointer;
+}
+
+/* letter */
+
+.Letter{
+width:520px;
+display:inline-block;
+}
+
+h1{
+font-size:20px;
+margin-bottom:8px;
+}
+
+/* coffee illustration */
+
+.coffee-art{
+position:absolute;
+right:70px;
+bottom:60px;
+}
+
+/* cup */
+
+.cup{
+width:120px;
+height:80px;
+background:linear-gradient(#9B6A44,#7C4E2F);
+border-radius:0 0 60px 60px;
+position:relative;
+box-shadow:0 6px 0 #6F4630;
+}
+
+/* latte */
+
+.latte{
+width:92px;
+height:36px;
+background:#E3AE73;
+border-radius:50%;
+position:absolute;
+top:-18px;
+left:14px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* foam */
+
+.foam{
+position:absolute;
+width:92px;
+height:36px;
+background:#F6D5A8;
+border-radius:50%;
+opacity:0.4;
+}
+
+/* latte heart */
+
+.latte-heart{
+width:18px;
+height:18px;
+background:white;
+transform:rotate(45deg);
+position:relative;
+}
+
+.latte-heart:before,
+.latte-heart:after{
+content:'';
+position:absolute;
+width:18px;
+height:18px;
+background:white;
+border-radius:50%;
+}
+
+.latte-heart:before{
+top:-9px;
+}
+
+.latte-heart:after{
+left:-9px;
+}
+
+/* handle */
+
+.handle{
+width:34px;
+height:34px;
+border:6px solid #7C4E2F;
+border-radius:50%;
+position:absolute;
+right:-30px;
+top:12px;
+}
+
+/* saucer */
+
+.saucer{
+width:160px;
+height:22px;
+background:linear-gradient(#9B6A44,#7C4E2F);
+border-radius:50%;
+position:absolute;
+bottom:-12px;
+left:-20px;
+}
+
+/* shadow */
+
+.shadow{
+width:160px;
+height:15px;
+background:rgba(0,0,0,0.2);
+border-radius:50%;
+position:absolute;
+bottom:-18px;
+left:-20px;
+filter:blur(6px);
+}
+
+/* bean */
+
+.bean{
+width:18px;
+height:28px;
+background:#5A3622;
+border-radius:50%;
+position:absolute;
+right:-60px;
+top:-60px;
+}
+
+.bean:after{
+content:'';
+width:2px;
+height:24px;
+background:#3d2315;
+position:absolute;
+left:8px;
+top:2px;
+border-radius:50%;
+}
+
+/* steam */
+
+.steam{
+position:absolute;
+bottom:75px;
+left:40px;
+}
+
+.steam span{
+position:absolute;
+width:16px;
+height:16px;
+background:#F4C9A2;
+transform:rotate(45deg);
+animation:steam 5s infinite;
+opacity:0;
+}
+
+/* heart shape */
+
+.steam span:before,
+.steam span:after{
+content:'';
+position:absolute;
+width:16px;
+height:16px;
+background:#F4C9A2;
+border-radius:50%;
+}
+
+.steam span:before{
+top:-8px;
+}
+
+.steam span:after{
+left:-8px;
+}
+
+/* animation delays */
+
+.steam span:nth-child(2){
+animation-delay:1s;
+}
+
+.steam span:nth-child(3){
+animation-delay:2s;
+}
+
+.steam span:nth-child(4){
+animation-delay:3s;
+}
+
+/* steam movement */
+
+@keyframes steam{
+
+0%{
+transform:translateY(0) translateX(0) rotate(45deg);
+opacity:0;
+}
+
+30%{
+opacity:1;
+}
+
+60%{
+transform:translateY(-60px) translateX(10px) rotate(45deg);
+}
+
+100%{
+transform:translateY(-130px) translateX(-10px) rotate(45deg);
+opacity:0;
+}
+
+}
+
+/* Mobile View */
+@media screen and (max-width: 480px) {
+
+  /* Container smaller and centered */
+  .container {
+    width: 90%;
+    height: auto;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  /* Letter full width */
+  .Letter{
+    width:100%;
+    font-size:16px;
+    padding-right:120px;
+}
+
+  /* Coffee art moves below letter */
+  .coffee-art {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+  }
+
+  /* Cup scale smaller */
+  .cup {
+    width: 90px;
+    height: 60px;
+  }
+
+  .latte {
+    width: 70px;
+    height: 28px;
+    top: -14px;
+    left: 10px;
+  }
+
+  .foam {
+    width: 70px;
+    height: 28px;
+  }
+
+  .latte-heart {
+    width: 14px;
+    height: 14px;
+  }
+
+  .latte-heart:before,
+  .latte-heart:after {
+    width: 14px;
+    height: 14px;
+  }
+
+  .handle {
+    width: 28px;
+    height: 28px;
+    border: 5px solid #7C4E2F;
+    right: -22px;
+    top: 10px;
+  }
+
+  .saucer {
+    width: 120px;
+    height: 16px;
+    bottom: -10px;
+    left: -10px;
+  }
+
+  .shadow {
+    width: 120px;
+    height: 12px;
+    bottom: -14px;
+    left: -10px;
+    filter: blur(5px);
+  }
+
+  /* Beans scale smaller */
+  .bean {
+    width: 12px;
+    height: 20px;
+    right: -40px;
+    top: -40px;
+  }
+
+  .bean:after {
+    width: 1.5px;
+    height: 18px;
+    left: 5px;
+    top: 1px;
+  }
+
+  /* Steam smaller and repositioned */
+  .steam {
+    bottom: auto;
+    left: 35px;
+    margin-bottom: 10px;
+  }
+
+  .steam span {
+    width: 12px;
+    height: 12px;
+  }
+
+  .steam span:before,
+  .steam span:after {
+    width: 12px;
+    height: 12px;
+  }
+}
