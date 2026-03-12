@@ -14,6 +14,8 @@ export default function Notes() {
   const [toDoList, setToDoList] = useState([
     "Click Color YELLOW for today (March 10, 2023)",
     "COFFEEE CLICK for a surprise (March 12, 2023)",
+    "Click Color Pink for tomorrow (March 13, 2023)",
+    "Don't click the heart on unless you want to know a secret of me 😉",
   ]);
   const [newToDo, setNewToDo] = useState("");
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -33,12 +35,23 @@ export default function Notes() {
     setNewToDo("");
   };
 
+  // Sticky note navigation
   const handleStickyClick = (color) => {
-    router.push(`/flower/${color}`);
+
+    if (color === "pink") {
+      router.push("/pink/strawberry");
+    } else {
+      router.push(`/flower/${color}`);
+    }
+
   };
 
   const handleCoffeeClick = () => {
     router.push("/coffee/spanish_latte");
+  };
+
+  const handleRedHeartClick = () => {
+    router.push("/confession");
   };
 
   return (
@@ -49,7 +62,9 @@ export default function Notes() {
         <button className="back-btn" onClick={() => router.push("/home")}>
           ← Back
         </button>
+
         <h2>Notes</h2>
+
         <span className="date">
           {currentTime.toLocaleDateString("en-US", {
             weekday: "short",
@@ -70,6 +85,7 @@ export default function Notes() {
 
       {/* Sticky note colors */}
       <div className="sticky-icons">
+
         {stickyColors.map((color) => (
           <div
             key={color}
@@ -84,16 +100,34 @@ export default function Notes() {
           onClick={handleCoffeeClick}
           title="Spanish Latte"
         ></div>
+
+        {/* Red Heart Sticky */}
+        <div
+          className="sticky red-heart"
+          onClick={handleRedHeartClick}
+          title="Confession ❤️"
+        ></div>
+
       </div>
 
       {/* To-Do List */}
       <div className="todo-list">
+
         <h4>To-Do List</h4>
+
         <ul>
           {toDoList.map((item, index) => (
             <li
               key={index}
-              className={item.includes("COFFEEE CLICK") ? "coffee-text" : ""}
+              className={
+                item.includes("COFFEEE CLICK")
+                  ? "coffee-text"
+                  : item.includes("Click Color Pink")
+                  ? "pink-text"
+                  : item.includes("Don't click the heart")
+                  ? "red-heart-text"
+                  : ""
+              }
             >
               {item}
             </li>
@@ -101,18 +135,23 @@ export default function Notes() {
         </ul>
 
         <div className="todo-input">
+
           <input
             type="text"
             value={newToDo}
             onChange={(e) => setNewToDo(e.target.value)}
             placeholder="Add new task..."
           />
+
           <button onClick={handleAddToDo}>Add</button>
+
         </div>
+
       </div>
 
       {/* Footer */}
       <div className="notes-footer">
+
         <span className="time">
           {currentTime.toLocaleTimeString([], {
             hour: "2-digit",
@@ -124,7 +163,9 @@ export default function Notes() {
           <div className="bear"></div>
           <div className="dog"></div>
         </div>
+
       </div>
+
     </div>
   );
 }

@@ -1,0 +1,336 @@
+body{
+margin:0;
+font-family:cursive;
+}
+
+/* page background */
+
+.page{
+position:fixed;
+width:100%;
+height:100%;
+background:#ffd6e7;
+overflow:hidden;
+}
+
+/* floating strawberries */
+
+.strawberry-container{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+}
+
+.floating-strawberry{
+position:absolute;
+width:100px;
+opacity:0.9;
+animation:floatStrawberry linear infinite;
+}
+
+@keyframes floatStrawberry{
+
+0%{
+transform:translateY(100vh) rotate(0deg);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+80%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120px) rotate(360deg);
+opacity:0;
+}
+
+}
+
+/* letter container */
+
+.container{
+width:720px;
+min-height:360px;
+
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+
+background:#b3518d;
+border-radius:20px;
+
+padding:25px;
+
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+
+display:flex;
+justify-content:space-between;
+}
+
+/* close button */
+
+.close-btn{
+position:absolute;
+top:10px;
+right:15px;
+
+border:none;
+background:none;
+font-size:20px;
+cursor:pointer;
+}
+
+/* letter text */
+
+.letter{
+width:480px;
+}
+
+.letter p{
+font-size:18px;
+margin-bottom:10px;
+line-height:1.5;
+}
+
+
+/* strawberry illustration */
+
+.strawberry-art{
+position:absolute;
+right:70px;
+bottom:60px;
+}
+
+/* strawberry body */
+
+.strawberry{
+width:90px;
+height:100px;
+background:#ff4d6d;
+border-radius:60% 60% 70% 70%;
+position:relative;
+transform:rotate(-5deg);
+box-shadow:inset -8px -10px #e63950;
+}
+
+/* seeds */
+
+.strawberry:before{
+content:'';
+position:absolute;
+width:6px;
+height:10px;
+background:#ffd166;
+border-radius:50%;
+top:20px;
+left:20px;
+box-shadow:
+20px 10px #ffd166,
+40px 20px #ffd166,
+30px 40px #ffd166,
+10px 50px #ffd166,
+50px 55px #ffd166,
+35px 70px #ffd166,
+15px 75px #ffd166;
+}
+
+/* leaves */
+
+.leaf{
+width:40px;
+height:30px;
+background:#4caf50;
+position:absolute;
+top:-20px;
+border-radius:50%;
+}
+
+.leaf1{
+left:10px;
+transform:rotate(-30deg);
+}
+
+.leaf2{
+left:30px;
+transform:rotate(10deg);
+}
+
+.leaf3{
+left:50px;
+transform:rotate(40deg);
+}
+
+/* floating hearts */
+
+.berry-hearts span{
+position:absolute;
+width:14px;
+height:14px;
+background:#ff8fab;
+transform:rotate(45deg);
+animation:floatHeart 4s infinite;
+opacity:0;
+}
+
+.berry-hearts span:before,
+.berry-hearts span:after{
+content:'';
+position:absolute;
+width:14px;
+height:14px;
+background:#ff8fab;
+border-radius:50%;
+}
+
+.berry-hearts span:before{
+top:-7px;
+}
+
+.berry-hearts span:after{
+left:-7px;
+}
+
+.berry-hearts span:nth-child(2){
+left:20px;
+animation-delay:1s;
+}
+
+.berry-hearts span:nth-child(3){
+left:40px;
+animation-delay:2s;
+}
+
+/* heart animation */
+
+@keyframes floatHeart{
+
+0%{
+transform:translateY(0) rotate(45deg);
+opacity:0;
+}
+
+30%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-80px) rotate(45deg);
+opacity:0;
+}
+
+}
+
+/* strawberry shadow */
+
+.berry-shadow{
+width:90px;
+height:12px;
+background:rgba(0,0,0,0.2);
+border-radius:50%;
+margin-top:10px;
+filter:blur(5px);
+}
+
+
+/* mobile */
+
+/* mobile */
+
+@media screen and (max-width:480px){
+
+.container{
+width:90%;
+flex-direction:column;
+align-items:center;
+}
+
+/* letter full width */
+
+.letter{
+width:100%;
+}
+
+/* strawberry illustration for mobile */
+
+.strawberry-art{
+position:relative;
+right:auto;
+bottom:auto;
+margin-top:25px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* smaller strawberry */
+
+.strawberry{
+width:65px;
+height:75px;
+}
+
+/* smaller leaves */
+
+.leaf{
+width:28px;
+height:22px;
+top:-15px;
+}
+
+.leaf1{
+left:5px;
+}
+
+.leaf2{
+left:18px;
+}
+
+.leaf3{
+left:32px;
+}
+
+/* smaller seeds */
+
+.strawberry:before{
+width:4px;
+height:7px;
+top:15px;
+left:12px;
+box-shadow:
+14px 8px #ffd166,
+28px 15px #ffd166,
+20px 30px #ffd166,
+8px 38px #ffd166,
+32px 40px #ffd166,
+22px 52px #ffd166,
+10px 55px #ffd166;
+}
+
+/* hearts smaller */
+
+.berry-hearts span{
+width:10px;
+height:10px;
+}
+
+.berry-hearts span:before,
+.berry-hearts span:after{
+width:10px;
+height:10px;
+}
+
+/* smaller shadow */
+
+.berry-shadow{
+width:65px;
+height:10px;
+}
+
+}

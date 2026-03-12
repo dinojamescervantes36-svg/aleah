@@ -133,11 +133,37 @@
 .back-btn:hover{
   background:#b7b5e0;
 }
+.sticky.red-heart {
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.sticky.red-heart::after {
+    content: "❤";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: white;
+}
 
 /* Coffee-colored To-Do item */
 .coffee-text {
-  color: #8B5E3C; /* coffee brown color */
+  color: black; /* coffee brown color */
+}
+.pink-text {
+  color: #ff69b4; /* pink color */
   font-weight: bold;
+}
+.red-heart-text {
+  color: red; /* pink color */
 }
 
 /* ===================== */
