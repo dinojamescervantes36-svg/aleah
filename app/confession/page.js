@@ -54,7 +54,7 @@ export default function LovePage() {
       "hmmmm...",
       "uhmmmmmm... 🤔",
       "I think I like you. ❤️",
-      "And not just for one reason — for many.",
+      "And not just for one reason for many.",
       "I like your flaws, your imperfections, and the way they make you perfectly you. I love your personality, your vibe, and the way you somehow brighten the space around you. Your style feels effortless, and your smile… it just makes everything better. 😊",
       "That’s actually why I made this little web-app. I wanted to express what I feel in a way that’s personal and real. Every line of code here carries a bit of my thoughts about you. It’s my own way of showing how much you mean to me.💻❤️",
       "But please don’t feel pressured by this, okay? You don’t have to feel the same way, and that’s completely okay. I just wanted to be honest about how I feel, because keeping it inside didn’t feel right anymore.",
