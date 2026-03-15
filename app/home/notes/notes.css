@@ -17,10 +17,12 @@
   align-items:center;
   font-size:14px;
 }
+
 .notes-header h2{
   margin:0;
   font-size:24px;
 }
+
 .date{
   font-size:14px;
   color:#555;
@@ -51,43 +53,97 @@
   cursor:pointer;
   transition:transform .2s;
 }
+
 .sticky:hover{
   transform:scale(1.1);
 }
+
 .sticky.blue{ background:#a2d2ff; }
 .sticky.yellow{ background:#f7f48b; }
 .sticky.green{ background:#b5e48c; }
 .sticky.pink{ background:#ffc6ff; }
 .sticky.orange{ background:#ffadad; }
 .sticky.purple{ background:#cdb4db; }
+
 /* Coffee sticky */
 .sticky.coffee{
   background:#8B5E3C;
 }
 
+/* ===================== */
+/* DRESS STICKY 👗 */
+/* ===================== */
+
+.sticky.dress{
+  width:40px;
+  height:40px;
+  background-image:url("/designer/design_dress.png");
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  cursor:pointer;
+}
+
+.sticky.dress:hover{
+  transform:scale(1.15) rotate(-5deg);
+}
+
+/* ===================== */
+/* HEART STICKY */
+/* ===================== */
+
+.sticky.red-heart {
+  width:40px;
+  height:40px;
+  background-color:red;
+  border-radius:50%;
+  display:inline-block;
+  margin:5px;
+  cursor:pointer;
+  position:relative;
+}
+
+.sticky.red-heart::after{
+  content:"❤";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  font-size:20px;
+  color:white;
+}
+
+/* ===================== */
 /* Todo list */
+/* ===================== */
+
 .todo-list h4{
   margin:0 0 5px 0;
   font-size:18px;
 }
+
 .todo-list ul{
   margin:0;
   padding-left:20px;
 }
+
 .todo-list li{
   margin-bottom:5px;
   font-size:16px;
 }
 
 /* Todo input */
+
 .todo-input{
   margin-top:8px;
 }
+
 .todo-input input{
   padding:6px;
   border-radius:6px;
   border:1px solid #ccc;
 }
+
 .todo-input button{
   padding:6px 10px;
   border-radius:6px;
@@ -95,24 +151,31 @@
   background:#c9c7e8;
   cursor:pointer;
 }
+
 .todo-input button:hover{
   background:#b7b5e0;
 }
 
+/* ===================== */
 /* Footer */
+/* ===================== */
+
 .notes-footer{
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
+
 .time{
   font-size:14px;
   color:#555;
 }
+
 .characters{
   display:flex;
   gap:10px;
 }
+
 .bear,.dog{
   width:40px;
   height:40px;
@@ -120,7 +183,10 @@
   background:#f5c6a5;
 }
 
+/* ===================== */
 /* Back Button */
+/* ===================== */
+
 .back-btn{
   background:#c9c7e8;
   border:none;
@@ -130,46 +196,38 @@
   font-family:'Sacramento', cursive;
   font-size:14px;
 }
+
 .back-btn:hover{
   background:#b7b5e0;
 }
-.sticky.red-heart {
-    width: 40px;
-    height: 40px;
-    background-color: red;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 5px;
-    cursor: pointer;
-    position: relative;
+
+/* ===================== */
+/* Todo Text Colors */
+/* ===================== */
+
+.coffee-text{
+  color:black;
 }
 
-.sticky.red-heart::after {
-    content: "❤";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-    color: white;
+.pink-text{
+  color:black;
 }
 
-/* Coffee-colored To-Do item */
-.coffee-text {
-  color: black; /* coffee brown color */
+.red-heart-text{
+  color:red;
 }
-.pink-text {
-  color: #ff69b4; /* pink color */
-  font-weight: bold;
-}
-.red-heart-text {
-  color: red; /* pink color */
+
+.dress-text{
+  color:#ff4d88;
+  font-weight:bold;
 }
 
 /* ===================== */
 /* MOBILE RESPONSIVE */
 /* ===================== */
+
 @media (max-width:768px){
+
   .notes-container{
     width:90%;
     margin:20px auto;
@@ -183,7 +241,7 @@
 
   .note-input{
     height:110px;
-    width: 90%;
+    width:90%;
   }
 
   .sticky-icons{
@@ -194,7 +252,9 @@
     display:flex;
     gap:6px;
   }
+
   .todo-input input{
     flex:1;
   }
+
 }

@@ -15,14 +15,19 @@ export default function Notes() {
     "Click Color YELLOW for today (March 10, 2023)",
     "COFFEEE CLICK for a surprise (March 12, 2023)",
     "Click Color Pink for tomorrow (March 13, 2023)",
-    "Don't click the heart on unless you want to know a secret of me 😉",
+    "Don't click the heart unless you want to know a secret of me 😉",
+    "Click the Dress for a fashion surprise 👗"
   ]);
+
   const [newToDo, setNewToDo] = useState("");
   const [currentTime, setCurrentTime] = useState(new Date());
 
   // Update time every minute
   useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 60000);
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000);
+
     return () => clearInterval(timer);
   }, []);
 
@@ -37,13 +42,11 @@ export default function Notes() {
 
   // Sticky note navigation
   const handleStickyClick = (color) => {
-
     if (color === "pink") {
       router.push("/pink/strawberry");
     } else {
       router.push(`/flower/${color}`);
     }
-
   };
 
   const handleCoffeeClick = () => {
@@ -54,12 +57,20 @@ export default function Notes() {
     router.push("/confession");
   };
 
+  const handleDressClick = () => {
+    router.push("/designer/dress");
+  };
+
   return (
     <div className="notes-container">
 
       {/* Header */}
       <div className="notes-header">
-        <button className="back-btn" onClick={() => router.push("/home")}>
+
+        <button
+          className="back-btn"
+          onClick={() => router.push("/home")}
+        >
           ← Back
         </button>
 
@@ -73,6 +84,7 @@ export default function Notes() {
             year: "numeric",
           })}
         </span>
+
       </div>
 
       {/* Note input */}
@@ -83,7 +95,7 @@ export default function Notes() {
         placeholder="Type your note..."
       />
 
-      {/* Sticky note colors */}
+      {/* Sticky note icons */}
       <div className="sticky-icons">
 
         {stickyColors.map((color) => (
@@ -94,12 +106,21 @@ export default function Notes() {
           ></div>
         ))}
 
+        {/* Dress Sticky */}
+        <div
+          className="sticky dress"
+          onClick={handleDressClick}
+          title="Dress Designer"
+        ></div>
+
         {/* Coffee Sticky */}
         <div
           className="sticky coffee"
           onClick={handleCoffeeClick}
           title="Spanish Latte"
-        ></div>
+        >
+          <span></span>
+        </div>
 
         {/* Red Heart Sticky */}
         <div
@@ -124,8 +145,10 @@ export default function Notes() {
                   ? "coffee-text"
                   : item.includes("Click Color Pink")
                   ? "pink-text"
-                  : item.includes("Don't click the heart")
+                  : item.includes("heart")
                   ? "red-heart-text"
+                  : item.includes("Dress")
+                  ? "dress-text"
                   : ""
               }
             >
@@ -143,7 +166,9 @@ export default function Notes() {
             placeholder="Add new task..."
           />
 
-          <button onClick={handleAddToDo}>Add</button>
+          <button onClick={handleAddToDo}>
+            Add
+          </button>
 
         </div>
 
