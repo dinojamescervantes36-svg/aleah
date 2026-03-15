@@ -8,7 +8,7 @@ export default function DressLetter() {
 
   const fullLetter = [
   "Hello Alleaaaah! ✨",
-  "Alam mo ba, every time I see you doodling, it’s like you’re turning boredom into mini masterpieces? Those sketches of yours… honestly, they make me stop and stare. Seryoso, sino'ng mag-aakala na pagod sa klase could look this creative? Kahit na simple lang, bawat linya at bawat curve ng drawing mo shows your amazing talent.",
+  "Alam mo ba, nung I see you doodling, it’s like you’re turning boredom into mini masterpieces? Those sketches of yours… honestly, they make me stop and stare. Seryoso, sino'ng mag-aakala na pagod sa klase could look this creative? Kahit na simple lang, bawat linya at bawat curve ng drawing mo shows your amazing talent.",
   "Keep filling your pages, kasi your ideas are way too fun to keep hidden. Huwag kang mag-alala kung may stress or bad vibes sa araw mo tandaan mo, I’m cheering for you! Ang talent mo isn’t just in making dresses or designs it’s in every little thing you create, kahit doodle lang sa notebook mo. apply ka na haha",
   "So keep sketching, keep dreaming, and keep smiling. Take care, and remember, I’m always rooting for you! ❤️",
   "- dino"

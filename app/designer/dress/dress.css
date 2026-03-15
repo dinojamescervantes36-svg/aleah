@@ -1,15 +1,32 @@
+/* ===================== */
+/* BODY */
+/* ===================== */
+
+body{
+  margin:0;
+  padding:0;
+  font-family:'Sacramento', cursive;
+}
+
+
+/* ===================== */
+/* PAGE */
+/* ===================== */
+
 .page{
   position:relative;
-
   height:100vh;
   width:100%;
+
   display:flex;
   justify-content:center;
   align-items:center;
 
-  background-image: url("/designer/wallpaper_dress.png");
-  background-size: cover;
-  background-position: center;
+  padding:20px;
+
+  background-image:url("/designer/wallpaper_dress.png");
+  background-size:cover;
+  background-position:center;
 }
 
 .page::before{
@@ -17,17 +34,17 @@
   position:absolute;
   inset:0;
   background:rgba(0,0,0,0.25);
-  backdrop-filter: blur(2px);
+  backdrop-filter:blur(2px);
 }
 
-.card{
-  position:relative;
-}
 
+/* ===================== */
 /* CARD */
+/* ===================== */
 
 .card{
   position:relative;
+
   width:900px;
   min-height:420px;
 
@@ -39,10 +56,9 @@
 
   padding:40px;
 
-  box-shadow:
-  0 15px 35px rgba(0,0,0,0.2);
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
 
-  animation:pop 0.4s ease;
+  animation:pop .4s ease;
 }
 
 @keyframes pop{
@@ -56,7 +72,10 @@
   }
 }
 
+
+/* ===================== */
 /* CLOSE BUTTON */
+/* ===================== */
 
 .close{
   position:absolute;
@@ -69,11 +88,14 @@
   cursor:pointer;
 }
 
+
+/* ===================== */
 /* LETTER */
+/* ===================== */
 
 .letter{
   flex:1;
-  font-family: "Comic Sans MS", cursive;
+  font-family:"Comic Sans MS", cursive;
   font-size:18px;
   line-height:1.7;
   color:#2b2b2b;
@@ -83,10 +105,14 @@
   margin-bottom:10px;
 }
 
-/* DRESS */
+
+/* ===================== */
+/* DRESS IMAGE */
+/* ===================== */
 
 .dress{
   width:300px;
+
   display:flex;
   align-items:center;
   justify-content:center;
@@ -98,7 +124,71 @@
 }
 
 @keyframes float{
-  0%{ transform:translateY(0px); }
-  50%{ transform:translateY(-12px); }
-  100%{ transform:translateY(0px); }
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-12px);}
+  100%{transform:translateY(0px);}
+}
+
+
+/* ===================== */
+/* MOBILE VIEW */
+/* ===================== */
+
+@media screen and (max-width:768px){
+
+  .page{
+    padding:15px;
+    height:auto;
+    min-height:100vh;
+  }
+
+  .card{
+    width:95%;
+    min-height:auto;
+
+    flex-direction:column;
+    gap:20px;
+
+    padding:25px;
+  }
+
+  .letter{
+    font-size:20px;
+    line-height:1.6;
+  }
+
+  .dress{
+    width:100%;
+  }
+
+  .dress img{
+    width:200px;
+  }
+
+  .close{
+    top:10px;
+    right:12px;
+    font-size:20px;
+  }
+
+}
+
+
+/* ===================== */
+/* SMALL PHONE VIEW */
+/* ===================== */
+
+@media screen and (max-width:480px){
+
+  .card{
+    padding:20px;
+  }
+
+  .letter{
+    font-size:20px;
+}
+  .dress img{
+    width:170px;
+  }
+
 }
