@@ -10,24 +10,27 @@ body {
     display: flex;
     justify-content: center;
     gap: 60px;
-    padding: 12px;
+    padding: 14px;
     background: #e6a5a5;
     font-weight: bold;
-    flex-wrap: wrap; /* allow wrapping on small screens */
+    flex-wrap: wrap;
 }
 
-/* CENTER */
+/* CONTAINER */
 .container {
-    height: 80vh;
+    min-height: calc(100vh - 120px);
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 10px;
+    align-items: flex-start; /* align from top */
+    padding-top: 120px; /* push card down like mobile */
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* CARD */
 .card {
     width: 600px;
+    max-width: 90%;
     background: #f6caca;
     border: 6px solid #a23c3c;
     border-radius: 10px;
@@ -40,6 +43,7 @@ body {
     font-size: 60px;
 }
 
+/* INPUT */
 .card input {
     width: 80%;
     padding: 10px;
@@ -50,6 +54,7 @@ body {
     font-size: 16px;
 }
 
+/* BUTTON */
 .card button {
     padding: 10px 20px;
     border: 4px solid #a23c3c;
@@ -64,7 +69,7 @@ body {
     background: #8a2e2e;
 }
 
-/* BUTTONS GROUP */
+/* BUTTON GROUP */
 .button-group {
     display: flex;
     justify-content: center;
@@ -118,8 +123,13 @@ body {
     font-size: 12px;
 }
 
-/* ===== MOBILE VIEW ===== */
+/* MOBILE */
 @media screen and (max-width: 768px) {
+
+    .container{
+        padding-top:80px;
+    }
+
     .card {
         width: 90%;
         padding: 15px;
@@ -142,7 +152,9 @@ body {
         padding: 8px;
     }
 
-    .card button, .reset-btn, .home-btn {
+    .card button,
+    .reset-btn,
+    .home-btn {
         font-size: 14px;
         padding: 10px 12px;
     }
