@@ -1,0 +1,395 @@
+body {
+  background: #E8F4F8;
+  font-family: 'Sacramento', cursive;
+  margin: 0;
+}
+
+/* container */
+
+.running-container {
+  width: 800px;
+  height: 420px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #B3E5FC;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* close button */
+
+.running-close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* letter */
+
+.running-letter {
+  width: 520px;
+  display: inline-block;
+}
+
+.running-letter h1 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #01579B;
+}
+
+/* running illustration */
+
+.running-art {
+  position: absolute;
+  right: 70px;
+  bottom: 60px;
+  width: 150px;
+  height: 120px;
+  perspective: 1000px;
+}
+
+/* runner figure */
+
+.runner {
+  position: relative;
+  width: 60px;
+  height: 90px;
+  animation: runnerBounce 0.8s ease-in-out infinite;
+}
+
+/* runner head */
+
+.runner-head {
+  width: 18px;
+  height: 18px;
+  background: #FFB74D;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 21px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* runner body */
+
+.runner-body {
+  width: 14px;
+  height: 28px;
+  background: #FF6B9D;
+  position: absolute;
+  top: 20px;
+  left: 23px;
+  border-radius: 4px;
+}
+
+/* runner legs */
+
+.runner-legs {
+  position: absolute;
+  top: 48px;
+  left: 23px;
+  width: 14px;
+  height: 35px;
+}
+
+.leg {
+  position: absolute;
+  width: 8px;
+  height: 30px;
+  background: #4A90E2;
+  border-radius: 4px;
+  left: 0;
+  transform-origin: top center;
+}
+
+.leg-front {
+  animation: legFront 0.8s ease-in-out infinite;
+}
+
+.leg-back {
+  left: 6px;
+  animation: legBack 0.8s ease-in-out infinite;
+}
+
+/* runner arms */
+
+.runner-arms {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  width: 20px;
+  height: 25px;
+}
+
+.arm {
+  position: absolute;
+  width: 7px;
+  height: 24px;
+  background: #FFB74D;
+  border-radius: 4px;
+  transform-origin: top center;
+}
+
+.arm-front {
+  left: 0;
+  animation: armFront 0.8s ease-in-out infinite;
+}
+
+.arm-back {
+  right: 0;
+  animation: armBack 0.8s ease-in-out infinite;
+}
+
+/* motion lines */
+
+.motion-lines {
+  position: absolute;
+  left: -40px;
+  top: 30px;
+  width: 40px;
+  height: 30px;
+}
+
+.line {
+  position: absolute;
+  height: 2px;
+  background: #4A90E2;
+  opacity: 0.6;
+  border-radius: 2px;
+}
+
+.line-1 {
+  width: 30px;
+  top: 10px;
+  animation: motionLine 0.8s ease-in-out infinite;
+}
+
+.line-2 {
+  width: 25px;
+  top: 20px;
+  animation: motionLine 0.8s ease-in-out infinite 0.1s;
+}
+
+.line-3 {
+  width: 20px;
+  top: 30px;
+  animation: motionLine 0.8s ease-in-out infinite 0.2s;
+}
+
+/* sparkles */
+
+.sparkles {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: -10px;
+  right: -20px;
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #FFD54F;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 4px #FFD54F;
+}
+
+.sparkle-1 {
+  top: 20px;
+  right: 60px;
+  animation: sparkleFloat 1.5s ease-in-out infinite;
+}
+
+.sparkle-2 {
+  top: 40px;
+  right: 40px;
+  animation: sparkleFloat 1.5s ease-in-out infinite 0.3s;
+}
+
+.sparkle-3 {
+  top: 60px;
+  right: 70px;
+  animation: sparkleFloat 1.5s ease-in-out infinite 0.6s;
+}
+
+/* shadow */
+
+.running-shadow {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+/* animations */
+
+@keyframes runnerBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes legFront {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(40deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes legBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(40deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes armFront {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-50deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes armBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-50deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes motionLine {
+  0% {
+    opacity: 0.6;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+}
+
+@keyframes sparkleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.5);
+  }
+}
+
+/* Mobile View */
+@media screen and (max-width: 480px) {
+  .running-container {
+    width: 90%;
+    height: auto;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .running-letter {
+    width: 100%;
+    font-size: 16px;
+    padding-right: 120px;
+  }
+
+  .running-art {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+  }
+
+  .runner {
+    width: 50px;
+    height: 75px;
+  }
+
+  .runner-head {
+    width: 14px;
+    height: 14px;
+    top: 0;
+    left: 18px;
+  }
+
+  .runner-body {
+    width: 12px;
+    height: 24px;
+    top: 16px;
+    left: 19px;
+  }
+
+  .running-shadow {
+    width: 50px;
+    height: 10px;
+  }
+}

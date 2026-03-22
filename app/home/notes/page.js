@@ -16,7 +16,8 @@ export default function Notes() {
     "COFFEEE CLICK for a surprise (March 12, 2023)",
     "Click Color Pink for tomorrow (March 13, 2023)",
     "Don't click the heart unless you want to know a secret of me 😉",
-    "Click the Dress for a fashion surprise 👗"
+    "Click the Dress for a fashion surprise 👗",
+    "Go for a run and stay consistent 🏃‍♀️"
   ]);
 
   const [newToDo, setNewToDo] = useState("");
@@ -59,6 +60,11 @@ export default function Notes() {
 
   const handleDressClick = () => {
     router.push("/designer/dress");
+  };
+
+  // 🏃‍♀️ Running button handler
+  const handleRunClick = () => {
+    router.push("/running"); // change route if needed
   };
 
   return (
@@ -119,6 +125,7 @@ export default function Notes() {
           onClick={handleCoffeeClick}
           title="Spanish Latte"
         >
+          ☕
           <span></span>
         </div>
 
@@ -128,6 +135,15 @@ export default function Notes() {
           onClick={handleRedHeartClick}
           title="Confession ❤️"
         ></div>
+
+        {/* 🏃‍♀️ Running Sticky */}
+        <div
+          className="sticky running"
+          onClick={handleRunClick}
+          title="Running Motivation"
+        >
+          👟
+        </div>
 
       </div>
 
@@ -149,6 +165,8 @@ export default function Notes() {
                   ? "red-heart-text"
                   : item.includes("Dress")
                   ? "dress-text"
+                  : item.includes("run") || item.includes("Run")
+                  ? "running-text"
                   : ""
               }
             >

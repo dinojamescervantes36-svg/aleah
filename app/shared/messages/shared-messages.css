@@ -228,58 +228,94 @@ body {
 }
 
 /* Category Selector */
-.category-selector {
+/* Mood Selector */
+.mood-selector {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.category-btn {
-  padding: 0.75rem 1rem;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  background: #f5f5f5;
+.mood-selector > label {
+  font-weight: 700;
   color: var(--color-text);
+  font-size: 0.95rem;
 }
 
-.category-btn.active {
-  border-width: 2px;
-  transform: scale(1.02);
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 0.8rem;
 }
 
-.category-btn.gradient-purple {
-  background: linear-gradient(135deg, var(--color-purple-light) 0%, #fce0f3 100%);
-  color: var(--color-purple);
+.mood-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1rem 0.75rem;
+  border: 3px solid;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  position: relative;
 }
 
-.category-btn.gradient-purple.active {
+.mood-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mood-btn.active {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mood-emoji {
+  font-size: 1.8rem;
+  display: block;
+}
+
+.mood-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Custom Mood Input */
+.custom-mood {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.custom-mood input {
+  padding: 0.75rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.custom-mood input:focus {
+  outline: none;
   border-color: var(--color-purple);
-  box-shadow: 0 4px 15px rgba(217, 70, 166, 0.2);
+  box-shadow: 0 0 0 3px rgba(217, 70, 166, 0.1);
 }
 
-.category-btn.gradient-orange {
-  background: linear-gradient(135deg, var(--color-orange-light) 0%, #fed7aa 100%);
-  color: var(--color-orange);
-}
-
-.category-btn.gradient-orange.active {
-  border-color: var(--color-orange);
-  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.2);
-}
-
-.category-btn.gradient-teal {
-  background: linear-gradient(135deg, var(--color-teal-light) 0%, #a7f3d0 100%);
-  color: var(--color-teal);
-}
-
-.category-btn.gradient-teal.active {
-  border-color: var(--color-teal);
-  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.2);
+.custom-mood-preview {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #f0d9f1, #fce0f3);
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--color-purple);
+  font-size: 0.9rem;
 }
 
 /* Textarea */
@@ -417,7 +453,7 @@ body {
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid transparent;
+  border-left: 5px solid;
   transition: all 0.3s ease;
   animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -433,32 +469,7 @@ body {
   }
 }
 
-.message-card.general {
-  border-left-color: var(--color-purple);
-  background: linear-gradient(
-    135deg,
-    rgba(217, 70, 166, 0.02) 0%,
-    rgba(217, 70, 166, 0) 100%
-  );
-}
 
-.message-card.running {
-  border-left-color: var(--color-orange);
-  background: linear-gradient(
-    135deg,
-    rgba(249, 115, 22, 0.02) 0%,
-    rgba(249, 115, 22, 0) 100%
-  );
-}
-
-.message-card.adventure {
-  border-left-color: var(--color-teal);
-  background: linear-gradient(
-    135deg,
-    rgba(20, 184, 166, 0.02) 0%,
-    rgba(20, 184, 166, 0) 100%
-  );
-}
 
 .message-card:hover {
   transform: translateY(-2px);
@@ -498,13 +509,16 @@ body {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.message-category {
-  font-size: 0.8rem;
+.message-mood {
+  font-size: 0.85rem;
   font-weight: 600;
-  background: #f5f5f5;
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-  color: var(--color-text-light);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .delete-btn {
@@ -513,15 +527,24 @@ body {
   color: #999;
   cursor: pointer;
   font-size: 1.2rem;
-  transition: color 0.2s;
-  padding: 0.2rem;
+  transition: all 0.3s ease;
+  padding: 0.4rem 0.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 4px;
+  position: relative;
 }
 
 .delete-btn:hover {
-  color: #d946a6;
+  color: #fff;
+  background: #ef4444;
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
 }
 
 /* Empty State */

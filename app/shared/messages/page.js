@@ -7,10 +7,72 @@ export default function SharedMessages() {
   const router = useRouter();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("general");
+  const [selectedMood, setSelectedMood] = useState("happy");
+  const [customMoodName, setCustomMoodName] = useState("");
   const [userName, setUserName] = useState("");
   const [showNameInput, setShowNameInput] = useState(true);
   const [activeTab, setActiveTab] = useState("all");
+  const [showMoodPicker, setShowMoodPicker] = useState(false);
+
+  // Mood themes with colors and emojis
+  const moodThemes = {
+    happy: {
+      emoji: "😊",
+      name: "Happy",
+      color: "#FFD700",
+      bgGradient: "linear-gradient(135deg, #FFF8DC, #FFE4B5)",
+      borderColor: "#FFB347",
+    },
+    love: {
+      emoji: "💕",
+      name: "Love",
+      color: "#FF1493",
+      bgGradient: "linear-gradient(135deg, #FFE4E1, #FFC0CB)",
+      borderColor: "#FF69B4",
+    },
+    thoughtful: {
+      emoji: "🤔",
+      name: "Thoughtful",
+      color: "#4169E1",
+      bgGradient: "linear-gradient(135deg, #E0FFFF, #B0E0E6)",
+      borderColor: "#6495ED",
+    },
+    excited: {
+      emoji: "🎉",
+      name: "Excited",
+      color: "#FF6347",
+      bgGradient: "linear-gradient(135deg, #FFE4E1, #FF7F50)",
+      borderColor: "#FF4500",
+    },
+    calm: {
+      emoji: "😌",
+      name: "Calm",
+      color: "#20B2AA",
+      bgGradient: "linear-gradient(135deg, #F0FFFF, #AFEEEE)",
+      borderColor: "#3CB371",
+    },
+    sad: {
+      emoji: "😢",
+      name: "Sad",
+      color: "#4169E1",
+      bgGradient: "linear-gradient(135deg, #E6E6FA, #DDA0DD)",
+      borderColor: "#9370DB",
+    },
+    grateful: {
+      emoji: "🙏",
+      name: "Grateful",
+      color: "#32CD32",
+      bgGradient: "linear-gradient(135deg, #F0FFF0, #90EE90)",
+      borderColor: "#228B22",
+    },
+    inspired: {
+      emoji: "✨",
+      name: "Inspired",
+      color: "#FFB6C1",
+      bgGradient: "linear-gradient(135deg, #FFF0F5, #FFB6C1)",
+      borderColor: "#FF69B4",
+    },
+  };
 
   // Load messages from localStorage
   useEffect(() => {
@@ -38,21 +100,32 @@ export default function SharedMessages() {
       return;
     }
 
+    const moodLabel = customMoodName || moodThemes[selectedMood].name;
+
     const message = {
       id: Date.now(),
       text: newMessage,
       author: userName,
-      category: selectedCategory,
+      mood: selectedMood,
+      moodLabel: moodLabel,
+      moodEmoji: moodThemes[selectedMood].emoji,
       timestamp: new Date().toLocaleString(),
       createdAt: Date.now(),
     };
 
     setMessages([message, ...messages]);
     setNewMessage("");
+    setCustomMoodName("");
   };
 
   const handleDeleteMessage = (id) => {
-    setMessages(messages.filter((msg) => msg.id !== id));
+    const confirmed = window.confirm("Are you sure you want to permanently delete this message? This cannot be undone.");
+    if (confirmed) {
+      const updatedMessages = messages.filter((msg) => msg.id !== id);
+      setMessages(updatedMessages);
+      // Ensure it's saved to localStorage immediately
+      localStorage.setItem("sharedMessages", JSON.stringify(updatedMessages));
+    }
   };
 
   const handleSetName = (name) => {
@@ -63,21 +136,9 @@ export default function SharedMessages() {
   const filteredMessages =
     activeTab === "all"
       ? messages
-      : messages.filter((msg) => msg.category === activeTab);
+      : messages.filter((msg) => msg.mood === activeTab);
 
-  const categories = [
-    {
-      id: "general",
-      name: "💭 General Thoughts",
-      color: "gradient-purple",
-    },
-    { id: "running", name: "🏃‍♀️ Running Spirit", color: "gradient-orange" },
-    {
-      id: "adventure",
-      name: "🌍 Adventurous Heart",
-      color: "gradient-teal",
-    },
-  ];
+
 
   return (
     <div className="shared-messages-container">
@@ -85,7 +146,7 @@ export default function SharedMessages() {
       <div className="sm-header">
         <button
           className="back-button"
-          onClick={() => router.push("/home")}
+          onClick={() => router.push("/home/notes")}
         >
           ← Back
         </button>
@@ -133,19 +194,45 @@ export default function SharedMessages() {
             {userName && <span className="user-badge">Signed as: {userName}</span>}
           </div>
 
-          {/* Category Selection */}
-          <div className="category-selector">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                className={`category-btn ${
-                  selectedCategory === cat.id ? "active" : ""
-                } ${cat.color}`}
-                onClick={() => setSelectedCategory(cat.id)}
-              >
-                {cat.name}
-              </button>
-            ))}
+          {/* Mood Selection */}
+          <div className="mood-selector">
+            <label>How are you feeling?</label>
+            <div className="mood-grid">
+              {Object.entries(moodThemes).map(([key, mood]) => (
+                <button
+                  key={key}
+                  className={`mood-btn ${selectedMood === key ? "active" : ""}`}
+                  onClick={() => {
+                    setSelectedMood(key);
+                    setCustomMoodName("");
+                  }}
+                  style={{
+                    borderColor: mood.borderColor,
+                    backgroundColor: selectedMood === key ? mood.bgGradient : "transparent",
+                  }}
+                  title={mood.name}
+                >
+                  <span className="mood-emoji">{mood.emoji}</span>
+                  <span className="mood-label">{mood.name}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Custom Mood Name */}
+            <div className="custom-mood">
+              <input
+                type="text"
+                placeholder="Or name your mood... (optional)"
+                value={customMoodName}
+                onChange={(e) => setCustomMoodName(e.target.value.slice(0, 20))}
+                maxLength="20"
+              />
+              {customMoodName && (
+                <span className="custom-mood-preview">
+                  {moodThemes[selectedMood].emoji} {customMoodName}
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Text Area */}
@@ -182,13 +269,16 @@ export default function SharedMessages() {
               >
                 All ({messages.length})
               </button>
-              {categories.map((cat) => (
+              {Object.entries(moodThemes).map(([key, mood]) => (
                 <button
-                  key={cat.id}
-                  className={`tab-btn ${activeTab === cat.id ? "active" : ""}`}
-                  onClick={() => setActiveTab(cat.id)}
+                  key={key}
+                  className={`tab-btn ${activeTab === key ? "active" : ""}`}
+                  onClick={() => setActiveTab(key)}
+                  style={{
+                    borderBottomColor: activeTab === key ? mood.borderColor : "transparent",
+                  }}
                 >
-                  {cat.name.split(" ")[0]} ({messages.filter((m) => m.category === cat.id).length})
+                  {mood.emoji} ({messages.filter((m) => m.mood === key).length})
                 </button>
               ))}
             </div>
@@ -201,33 +291,37 @@ export default function SharedMessages() {
             </div>
           ) : (
             <div className="messages-grid">
-              {filteredMessages.map((message) => (
-                <div
-                  key={message.id}
-                  className={`message-card ${message.category}`}
-                >
-                  <div className="message-header">
-                    <span className="message-author">{message.author}</span>
-                    <span className="message-time">{message.timestamp}</span>
+              {filteredMessages.map((message) => {
+                const moodTheme = moodThemes[message.mood];
+                return (
+                  <div
+                    key={message.id}
+                    className="message-card"
+                    style={{
+                      background: moodTheme.bgGradient,
+                      borderLeftColor: moodTheme.borderColor,
+                    }}
+                  >
+                    <div className="message-header">
+                      <span className="message-author">{message.author}</span>
+                      <span className="message-time">{message.timestamp}</span>
+                    </div>
+                    <p className="message-text">{message.text}</p>
+                    <div className="message-footer">
+                      <span className="message-mood">
+                        {message.moodEmoji} {message.moodLabel}
+                      </span>
+                      <button
+                        className="delete-btn"
+                        onClick={() => handleDeleteMessage(message.id)}
+                        title="Delete message"
+                      >
+                        ✕
+                      </button>
+                    </div>
                   </div>
-                  <p className="message-text">{message.text}</p>
-                  <div className="message-footer">
-                    <span className="message-category">
-                      {
-                        categories.find((c) => c.id === message.category)
-                          ?.name
-                      }
-                    </span>
-                    <button
-                      className="delete-btn"
-                      onClick={() => handleDeleteMessage(message.id)}
-                      title="Delete message"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
