@@ -161,7 +161,7 @@ export default function SharedMessages() {
         <div className="name-modal-overlay">
           <div className="name-modal">
             <h2>What's your name?</h2>
-            <p>So your messages can be signed with your love 💕</p>
+            <p>So your messages can recognize</p>
             <input
               type="text"
               placeholder="Enter your name..."
