@@ -32,10 +32,13 @@ export default function Home() {
       </div>
 
       {/* Message Button */}
-      <button className="messageBtn">
-        <img src="/message.png" alt="message" />
-        <p>Message for you</p>
-      </button>
+        <button 
+          className="messageBtn"
+          onClick={() => router.push("/shared/messages")}
+        >
+          <img src="/message.png" alt="message" />
+          <p>Message for you</p>
+        </button>
 
       <div className="desktop-content">
         {/* Sidebar */}
