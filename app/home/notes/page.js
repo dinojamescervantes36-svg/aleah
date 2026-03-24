@@ -17,7 +17,8 @@ export default function Notes() {
     "Click Color Pink for tomorrow (March 13, 2023)",
     "Don't click the heart unless you want to know a secret of me 😉",
     "Click the Dress for a fashion surprise 👗",
-    "Go for a run and stay consistent 🏃‍♀️"
+    "Go for a run and stay consistent 🏃‍♀️",
+    "Click 🎉 Congrats for something special"
   ]);
 
   const [newToDo, setNewToDo] = useState("");
@@ -62,9 +63,13 @@ export default function Notes() {
     router.push("/designer/dress");
   };
 
-  // 🏃‍♀️ Running button handler
   const handleRunClick = () => {
-    router.push("/running"); // change route if needed
+    router.push("/running");
+  };
+
+  // 🎉 NEW: Congrats handler
+  const handleCongratsClick = () => {
+    router.push("/congrats");
   };
 
   return (
@@ -112,37 +117,45 @@ export default function Notes() {
           ></div>
         ))}
 
-        {/* Dress Sticky */}
+        {/* Dress */}
         <div
           className="sticky dress"
           onClick={handleDressClick}
           title="Dress Designer"
         ></div>
 
-        {/* Coffee Sticky */}
+        {/* Coffee */}
         <div
           className="sticky coffee"
           onClick={handleCoffeeClick}
           title="Spanish Latte"
         >
           ☕
-          <span></span>
         </div>
 
-        {/* Red Heart Sticky */}
+        {/* Heart */}
         <div
           className="sticky red-heart"
           onClick={handleRedHeartClick}
           title="Confession ❤️"
         ></div>
 
-        {/* 🏃‍♀️ Running Sticky */}
+        {/* Running */}
         <div
           className="sticky running"
           onClick={handleRunClick}
           title="Running Motivation"
         >
           👟
+        </div>
+
+        {/* 🎉 NEW: Congrats */}
+        <div
+          className="sticky congrats"
+          onClick={handleCongratsClick}
+          title="Congratulations 🎉"
+        >
+          🎉
         </div>
 
       </div>
@@ -167,6 +180,8 @@ export default function Notes() {
                   ? "dress-text"
                   : item.includes("run") || item.includes("Run")
                   ? "running-text"
+                  : item.includes("Congrats")
+                  ? "congrats-text"
                   : ""
               }
             >
