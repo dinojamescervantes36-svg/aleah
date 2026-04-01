@@ -227,6 +227,7 @@ body {
 .close-btn:active {
     transform: scale(0.95);
 }
+
 /* MOBILE */
 @media (max-width: 768px) {
     .book-card {

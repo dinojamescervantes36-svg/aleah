@@ -10,7 +10,7 @@ export default function Notes() {
   const stickyColors = ["blue", "yellow", "green", "pink", "orange", "purple"];
 
   // States
-  const [note, setNote] = useState("");
+  const [note, setNote] = useState("Hey, just checking in on you. Sana okay ka lang. No pressure magreply, take your time kung kailangan mo ng space.\nIf ever mabigat lang lahat or gusto mo lang ng kausap, nandito lang ako. Kahit tahimik lang, okay lang din. You don't have to handle everything alone, ah. Take care lagi.");
   const [toDoList, setToDoList] = useState([
     "Click Color YELLOW for today (March 10, 2023)",
     "COFFEEE CLICK for a surprise (March 12, 2023)",
@@ -18,7 +18,8 @@ export default function Notes() {
     "Don't click the heart unless you want to know a secret of me 😉",
     "Click the Dress for a fashion surprise 👗",
     "Go for a run and stay consistent 🏃‍♀️",
-    "Click 🎉 Congrats for something special"
+    "Click 🎉 Congrats for something special",
+    "Click 💙 Check-in to see a care message"
   ]);
 
   const [newToDo, setNewToDo] = useState("");
@@ -158,6 +159,15 @@ export default function Notes() {
           🎉
         </div>
 
+        {/* 💙 Check-in */}
+        <div
+          className="sticky checkin"
+          onClick={() => router.push("/checkin")}
+          title="Check In Message"
+        >
+          💙
+        </div>
+
       </div>
 
       {/* To-Do List */}
@@ -218,8 +228,8 @@ export default function Notes() {
         </span>
 
         <div className="characters">
-          <div className="bear"></div>
-          <div className="dog"></div>
+          <div className="character-item">🐻</div>
+          <div className="character-item">🐕</div>
         </div>
 
       </div>
