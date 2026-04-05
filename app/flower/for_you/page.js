@@ -1,110 +1,61 @@
 "use client";
-import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react";
 import "./for_you.css";
 
-export default function Home() {
+export default function ForYou() {
+  const router = useRouter();
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
-    // remove "not-loaded" after mount for animation
-    document.body.classList.remove("not-loaded");
+    const timer = setTimeout(() => setShowMessage(true), 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="night not-loaded">
-      <div className="flowers">
+    <div className="for-you-container">
+      {/* Close Button */}
+      <button
+        className="close-btn"
+        onClick={() => router.push("/home/notes")}
+      >
+        ✕
+      </button>
 
-        {/* FLOWER 1 */}
-        <div className="flower flower--1">
-          <div className="flower__leafs flower__leafs--1">
-            <div className="flower__leaf flower__leaf--1"></div>
-            <div className="flower__leaf flower__leaf--2"></div>
-            <div className="flower__leaf flower__leaf--3"></div>
-            <div className="flower__leaf flower__leaf--4"></div>
-            <div className="flower__white-circle"></div>
+      {/* Animated Background */}
+      <div className="animated-bg">
+        <div className="bubble bubble-1"></div>
+        <div className="bubble bubble-2"></div>
+        <div className="bubble bubble-3"></div>
+        <div className="bubble bubble-4"></div>
+      </div>
 
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className={`flower__light flower__light--${i+1}`}></div>
-            ))}
-          </div>
+      {/* Main Content */}
+      <div className="message-box">
+        {/* Decorative petals */}
+        <div className="petal petal-1">🌸</div>
+        <div className="petal petal-2">🌸</div>
+        <div className="petal petal-3">🌸</div>
 
-          <div className="flower__line">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className={`flower__line__leaf flower__line__leaf--${i+1}`}></div>
-            ))}
-          </div>
+        {/* Message */}
+        <div className={`message-content ${showMessage ? 'show' : ''}`}>
+          <h1>This is for you</h1>
+          <p>
+            Just a little reminder that you're special and deserve 
+            all the good things coming your way. 💕
+          </p>
+          <p>
+            Take a moment to breathe, smile, and know that you're 
+            appreciated more than you realize.
+          </p>
+          <p className="signature">✨ Always here for you ✨</p>
+          <button
+                className="flower-btn"
+                 onClick={() => router.push("/flower/this_is/for_you")}
+                  >
+                  click to see the flower
+            </button>
         </div>
-
-        {/* FLOWER 2 */}
-        <div className="flower flower--2">
-          <div className="flower__leafs flower__leafs--2">
-            {[1,2,3,4].map(i => (
-              <div key={i} className={`flower__leaf flower__leaf--${i}`}></div>
-            ))}
-            <div className="flower__white-circle"></div>
-
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className={`flower__light flower__light--${i+1}`}></div>
-            ))}
-          </div>
-
-          <div className="flower__line">
-            {[1,2,3,4].map(i => (
-              <div key={i} className={`flower__line__leaf flower__line__leaf--${i}`}></div>
-            ))}
-          </div>
-        </div>
-
-        {/* FLOWER 3 */}
-        <div className="flower flower--3">
-          <div className="flower__leafs flower__leafs--3">
-            {[1,2,3,4].map(i => (
-              <div key={i} className={`flower__leaf flower__leaf--${i}`}></div>
-            ))}
-            <div className="flower__white-circle"></div>
-
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className={`flower__light flower__light--${i+1}`}></div>
-            ))}
-          </div>
-
-          <div className="flower__line">
-            {[1,2,3,4].map(i => (
-              <div key={i} className={`flower__line__leaf flower__line__leaf--${i}`}></div>
-            ))}
-          </div>
-        </div>
-
-        {/* LONG STEM */}
-        <div className="grow-ans" style={{ "--d": "1.2s" }}>
-          <div className="flower__g-long">
-            <div className="flower__g-long__top"></div>
-            <div className="flower__g-long__bottom"></div>
-          </div>
-        </div>
-
-        {/* GRASS */}
-        <div className="growing-grass">
-          <div className="flower__grass flower__grass--1">
-            <div className="flower__grass--top"></div>
-            <div className="flower__grass--bottom"></div>
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className={`flower__grass__leaf flower__grass__leaf--${i+1}`}></div>
-            ))}
-            <div className="flower__grass__overlay"></div>
-          </div>
-        </div>
-
-        <div className="growing-grass">
-          <div className="flower__grass flower__grass--2">
-            <div className="flower__grass--top"></div>
-            <div className="flower__grass--bottom"></div>
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className={`flower__grass__leaf flower__grass__leaf--${i+1}`}></div>
-            ))}
-            <div className="flower__grass__overlay"></div>
-          </div>
-        </div>
-
       </div>
     </div>
   );
