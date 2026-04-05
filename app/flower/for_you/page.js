@@ -53,7 +53,7 @@ export default function ForYou() {
                 className="flower-btn"
                  onClick={() => router.push("/flower/this_is/for_you")}
                   >
-                  click to see the flower
+                  click here I have someting for you
             </button>
         </div>
       </div>

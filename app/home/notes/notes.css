@@ -245,7 +245,7 @@
 }
 
 .red-heart-text{
-  color:red;
+  color:black;
 }
 
 .dress-text{
@@ -253,8 +253,7 @@
 }
 
 .running-text {
-  color: #4A90E2;
-  font-weight: bold;
+  color: black;
 }
 
 /* ===================== */
@@ -285,8 +284,7 @@
 /* ===================== */
 
 .congrats-text {
-  color: #f59e0b;
-  font-weight: bold;
+  color: black;
 }
 
 /* glowing animation */
@@ -318,6 +316,7 @@
   border: 2px solid rgba(100, 150, 200, 0.5);
 }
 
+
 .sticky.checkin:hover {
   transform: scale(1.15) rotate(-5deg);
   box-shadow: 0 6px 15px rgba(100, 150, 200, 0.5);
@@ -329,6 +328,36 @@
 .checkin-text {
   color: #5c6bc0;
   font-weight: bold;
+}
+
+/* ===================== */
+/* SURPRISE BUTTON 🌸 WITH BOX */
+/* ===================== */
+.sticky.surprise {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The box effect */
+.sticky.surprise::after {
+  content: "";
+  position: absolute;
+  inset: -6px; /* space around the button */
+  border: 2px solid #ff9a9e;
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+/* Optional glow on hover */
+.sticky.surprise:hover::after {
+  box-shadow: 0 0 10px rgba(255, 154, 158, 0.8);
+}
+
+.surprise-text {
+  color: #ff7aa2; /* same pink tone as your button */
+  font-weight: 600; /* optional, makes it stand out */
 }
 
 /* ===================== */

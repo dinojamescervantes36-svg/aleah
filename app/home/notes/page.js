@@ -19,7 +19,8 @@ export default function Notes() {
     "Click the Dress for a fashion surprise 👗",
     "Go for a run and stay consistent 🏃‍♀️",
     "Click 🎉 Congrats for something special",
-    "Click 💙 Check-in to see a care message"
+    "Click 💙 Check-in to see a care message",
+    "I have something special for you, click the flower button 🌸",
   ]);
 
   const [newToDo, setNewToDo] = useState("");
@@ -71,6 +72,11 @@ export default function Notes() {
   // 🎉 NEW: Congrats handler
   const handleCongratsClick = () => {
     router.push("/congrats");
+  };
+
+  // 🌸
+  const handleSurpriseClick = () => {
+    router.push("/flower/for_you");
   };
 
   return (
@@ -168,6 +174,15 @@ export default function Notes() {
           💙
         </div>
 
+        {/* Surprice */}
+        <div
+          className="sticky surprise"
+          onClick={handleSurpriseClick}
+          title="surprise"
+        >
+          🌸
+        </div>
+
       </div>
 
       {/* To-Do List */}
@@ -192,6 +207,12 @@ export default function Notes() {
                   ? "running-text"
                   : item.includes("Congrats")
                   ? "congrats-text"
+                  : item.includes("Check-in")
+                  ? "checkin-text"
+                  : item.includes("surprise")
+                  ? "surprise-text"
+                  : item.includes("flower") || item.includes("special")
+                  ? "surprise-text"
                   : ""
               }
             >
